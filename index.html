@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carla Blot — Monteuse & Étalonneuse</title>
+  <meta name="description" content="Monteuse et étalonneuse spécialisée dans les formats conversationnels — podcasts, interviews, facecams, documentaires.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/shared.css">
+
+  <style>
+    /* ===== HERO ===== */
+    .cb-hero { position: relative; padding: 88px 48px 96px; background: #FAFAF8; overflow: hidden; }
+    .cb-hero-blob { position: absolute; border-radius: 50%; pointer-events: none; animation: cb-float 8s ease-in-out infinite; }
+    .cb-hero-blob-1 { width: 380px; height: 380px; background: rgba(180,155,215,0.18); top: -120px; right: -80px; filter: blur(65px); }
+    .cb-hero-blob-2 { width: 280px; height: 280px; background: rgba(168,213,204,0.2); bottom: -80px; left: -50px; filter: blur(55px); animation-delay: -3s; }
+    .cb-hero-blob-3 { width: 200px; height: 200px; background: rgba(242,196,176,0.18); bottom: 60px; right: 160px; filter: blur(45px); animation-delay: -5s; }
+    .cb-hero-content { position: relative; max-width: 620px; animation: cb-fadein 0.9s ease both; }
+    .cb-hero-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 20px; display: block; }
+    .cb-hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 52px); font-weight: 700; line-height: 1.05; color: #1E2A2A; margin: 0 0 8px; }
+    .cb-hero-h1 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-hero-sub { font-size: 15px; color: #5A6B6B; line-height: 1.75; margin: 20px 0 32px; max-width: 500px; }
+    .cb-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .cb-btn-primary { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; background: #1E2A2A; color: #FAFAF8; padding: 13px 26px; border-radius: 3px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease; display: inline-block; }
+    .cb-btn-primary:hover { background: #E8896A; transform: translateY(-2px); }
+    .cb-btn-ghost { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; background: transparent; color: #1E2A2A; padding: 12px 24px; border-radius: 3px; border: 1px solid rgba(30,42,42,0.25); text-decoration: none; cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease; display: inline-block; }
+    .cb-btn-ghost:hover { border-color: #E8896A; color: #E8896A; transform: translateY(-2px); }
+
+    /* ===== PROMESSE ===== */
+    .cb-promise { position: relative; padding: 72px 48px; background: #FAFAF8; overflow: hidden; }
+    .cb-promise-blob-1 { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: rgba(168,213,204,0.15); top: -80px; left: -60px; filter: blur(55px); pointer-events: none; }
+    .cb-promise-blob-2 { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: rgba(242,196,176,0.12); bottom: -60px; right: 80px; filter: blur(50px); pointer-events: none; }
+    .cb-promise-inner { position: relative; max-width: 900px; margin: 0 auto; }
+    .cb-promise-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 20px; display: block; }
+    .cb-promise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cb-promise-card { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: rgba(255,255,255,0.55); border-radius: 10px; border: 0.5px solid rgba(30,42,42,0.07); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .cb-promise-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(30,42,42,0.07); }
+    .cb-promise-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .cb-promise-title { font-size: 14px; font-weight: 500; color: #1E2A2A; margin: 0 0 6px; }
+    .cb-promise-text { font-size: 13px; color: #5A6B6B; line-height: 1.65; margin: 0; }
+
+    /* ===== PORTFOLIO HOME ===== */
+    .cb-portfolio-home { padding: 72px 48px; background: #FAFAF8; }
+    .cb-portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px; }
+    .cb-portfolio-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 8px; display: block; }
+    .cb-portfolio-h2 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: #1E2A2A; margin: 0; }
+    .cb-portfolio-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-portfolio-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cb-pill { font-size: 11px; font-weight: 500; padding: 6px 14px; border-radius: 20px; border: 0.5px solid rgba(30,42,42,0.2); color: #5A6B6B; background: #FAFAF8; cursor: pointer; text-decoration: none; transition: all 0.2s ease; display: inline-block; }
+    .cb-pill:hover, .cb-pill.active { background: #1E2A2A; color: #FAFAF8; border-color: #1E2A2A; }
+    .cb-grid-hero { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .cb-grid-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .cb-ratio-169 { position: relative; width: 100%; padding-top: 56.25%; border-radius: 10px; overflow: hidden; background: #1E2A2A; }
+    .cb-ratio-916 { position: relative; width: 100%; padding-top: 177.77%; border-radius: 10px; overflow: hidden; background: #1E2A2A; }
+    .cb-ratio-169 iframe, .cb-ratio-916 iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .cb-vid-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(10,14,14,0.75) 0%, transparent 100%); z-index: 2; pointer-events: none; }
+    .cb-vid-cat { font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 5px; }
+    .cb-cat-podcast { background: rgba(168,213,204,0.3); color: #A8D5CC; }
+    .cb-cat-cine { background: rgba(180,155,215,0.3); color: #C4B4E8; }
+    .cb-cat-rs { background: rgba(232,137,106,0.25); color: #E8896A; }
+    .cb-vid-title { font-size: 12px; font-weight: 500; color: #F5F0EC; margin: 0; line-height: 1.3; }
+    .cb-portfolio-cta { text-align: center; margin-top: 20px; }
+    .cb-portfolio-cta span { font-size: 13px; color: #5A6B6B; }
+    .cb-portfolio-cta a { font-size: 13px; font-weight: 500; color: #E8896A; text-decoration: none; margin-left: 6px; }
+
+    /* ===== SERVICES HOME ===== */
+    .cb-services-home { position: relative; padding: 72px 48px; background: #F5F3F0; overflow: hidden; }
+    .cb-services-blob-1 { position: absolute; width: 320px; height: 320px; border-radius: 50%; background: rgba(180,155,215,0.12); top: -100px; right: -70px; filter: blur(60px); pointer-events: none; }
+    .cb-services-blob-2 { position: absolute; width: 240px; height: 240px; border-radius: 50%; background: rgba(168,213,204,0.15); bottom: -70px; left: -50px; filter: blur(50px); pointer-events: none; }
+    .cb-services-inner { position: relative; max-width: 1000px; margin: 0 auto; }
+    .cb-services-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 8px; display: block; }
+    .cb-services-h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #1E2A2A; margin: 0 0 28px; }
+    .cb-services-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cb-service-card { background: rgba(255,255,255,0.6); border-radius: 10px; padding: 20px; border: 0.5px solid rgba(30,42,42,0.06); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .cb-service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(30,42,42,0.08); }
+    .cb-service-card.featured { border: 0.5px solid #E8896A; }
+    .cb-service-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .cb-service-name { font-size: 14px; font-weight: 500; color: #1E2A2A; margin: 0 0 6px; }
+    .cb-service-desc { font-size: 12px; color: #5A6B6B; line-height: 1.6; margin: 0; }
+    .cb-service-link { font-size: 9px; font-weight: 500; background: #FAEAE4; color: #A0492A; padding: 3px 8px; border-radius: 10px; white-space: nowrap; text-decoration: none; }
+    .cb-services-cta { text-align: center; margin-top: 24px; }
+    .cb-services-cta a { font-size: 12px; font-weight: 500; color: #E8896A; text-decoration: none; }
+
+    /* ===== A PROPOS HOME ===== */
+    .cb-about-home { position: relative; padding: 72px 48px; background: #FAFAF8; overflow: hidden; }
+    .cb-about-blob { position: absolute; width: 260px; height: 260px; border-radius: 50%; background: rgba(232,137,106,0.1); top: -80px; left: -60px; filter: blur(50px); pointer-events: none; }
+    .cb-about-inner { position: relative; max-width: 760px; margin: 0 auto; display: flex; gap: 24px; align-items: flex-start; }
+    .cb-about-avatar { flex-shrink: 0; width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(150deg, #A8D5CC, #B8D4E8); display: flex; align-items: center; justify-content: center; border: 2px solid #FAFAF8; color: #FAFAF8; font-size: 26px; }
+    .cb-about-avatar-img { flex-shrink: 0; width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid #FAFAF8; }
+    .cb-about-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 10px; display: block; }
+    .cb-about-h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #1E2A2A; margin: 0 0 12px; }
+    .cb-about-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-about-text { font-size: 13px; color: #5A6B6B; line-height: 1.75; margin: 0 0 10px; max-width: 520px; }
+    .cb-about-link { font-size: 11px; font-weight: 500; color: #E8896A; text-decoration: none; letter-spacing: 0.03em; }
+
+    /* ===== SHOWREEL ===== */
+    .cb-showreel { padding: 72px 48px; background: #F5F3F0; text-align: center; }
+    .cb-showreel-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 10px; display: block; }
+    .cb-showreel-text { font-size: 14px; color: #5A6B6B; margin: 0 0 28px; }
+    .cb-showreel-frame { position: relative; max-width: 800px; margin: 0 auto; width: 100%; padding-top: 56.25%; border-radius: 12px; overflow: hidden; background: #1E2A2A; box-shadow: 0 20px 50px rgba(30,42,42,0.18); }
+    .cb-showreel-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+    /* ===== CTA FINAL ===== */
+    .cb-cta-final { padding: 80px 48px; background: linear-gradient(160deg, #2B3A3A 0%, #1E2A2A 100%); text-align: center; position: relative; overflow: hidden; }
+    .cb-cta-blob-1 { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: rgba(180,155,215,0.12); top: -80px; right: -60px; filter: blur(50px); pointer-events: none; }
+    .cb-cta-blob-2 { position: absolute; width: 200px; height: 200px; border-radius: 50%; background: rgba(232,137,106,0.12); bottom: -60px; left: -40px; filter: blur(40px); pointer-events: none; }
+    .cb-cta-content { position: relative; max-width: 560px; margin: 0 auto; }
+    .cb-cta-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #A8C5C0; margin: 0 0 14px; display: block; }
+    .cb-cta-h2 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: #F5F0EC; margin: 0 0 10px; line-height: 1.15; }
+    .cb-cta-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-cta-text { font-size: 13px; color: #A8BCBC; margin: 0 0 28px; line-height: 1.7; }
+    .cb-cta-btn { background: #E8896A; color: #FAFAF8; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 14px 30px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: transform 0.15s ease, box-shadow 0.2s ease; }
+    .cb-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,137,106,0.35); }
+
+    @media (max-width: 768px) {
+      .cb-hero { padding: 56px 20px 64px; }
+      .cb-hero-blob-1, .cb-hero-blob-2 { width: 200px; height: 200px; }
+      .cb-hero-blob-3 { display: none; }
+      .cb-promise { padding: 48px 20px; }
+      .cb-promise-grid { grid-template-columns: 1fr; }
+      .cb-portfolio-home { padding: 48px 20px; }
+      .cb-grid-hero, .cb-grid-secondary { grid-template-columns: 1fr; }
+      .cb-ratio-916 { padding-top: 56.25%; }
+      .cb-services-home { padding: 48px 20px; }
+      .cb-services-grid { grid-template-columns: 1fr; }
+      .cb-about-home { padding: 48px 20px; }
+      .cb-about-inner { flex-direction: column; align-items: center; text-align: center; }
+      .cb-showreel { padding: 48px 20px; }
+      .cb-cta-final { padding: 56px 20px; }
+      .cb-cta-h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="cb-nav">
+    <a href="index.html" class="cb-nav-logo">Carla <em>Blot</em></a>
+    <button class="cb-nav-toggle" onclick="this.parentNode.querySelector('.cb-nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="cb-nav-links">
+      <li><a href="pages/portfolio.html">Portfolio</a></li>
+      <li><a href="pages/etalonnage.html">Étalonnage</a></li>
+      <li><a href="pages/services.html">Services</a></li>
+      <li><a href="pages/a-propos.html">À propos</a></li>
+      <li><a href="#LIEN_CALENDLY" class="cb-nav-cta">Travaillons ensemble</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cb-hero">
+    <div class="cb-hero-blob cb-hero-blob-1"></div>
+    <div class="cb-hero-blob cb-hero-blob-2"></div>
+    <div class="cb-hero-blob cb-hero-blob-3"></div>
+    <div class="cb-hero-content">
+      <span class="cb-hero-tag">Monteuse · Étalonneuse</span>
+      <h1 class="cb-hero-h1">Le contenu que tu crées<br><em>mérite d'être vu.</em></h1>
+      <p class="cb-hero-sub">Je monte et j'étalonne tes podcasts, interviews et facecams — avec précision, avec soin, dans les délais. Pour que ton audience reste jusqu'au bout.</p>
+      <div class="cb-hero-actions">
+        <a href="#LIEN_CALENDLY" class="cb-btn-primary">Travaillons ensemble</a>
+        <a href="pages/portfolio.html" class="cb-btn-ghost">Voir le portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMESSE -->
+  <section class="cb-promise">
+    <div class="cb-promise-blob-1"></div>
+    <div class="cb-promise-blob-2"></div>
+    <div class="cb-promise-inner">
+      <span class="cb-promise-tag">Ce que tu peux attendre de moi</span>
+      <div class="cb-promise-grid">
+        <div class="cb-promise-card">
+          <span class="cb-promise-icon">📬</span>
+          <div><p class="cb-promise-title">Une réponse rapide, toujours.</p><p class="cb-promise-text">Je communique clairement à chaque étape. Tu ne te demandes jamais où en est ton épisode.</p></div>
+        </div>
+        <div class="cb-promise-card">
+          <span class="cb-promise-icon">⏱</span>
+          <div><p class="cb-promise-title">Tes délais, respectés.</p><p class="cb-promise-text">Toujours. Même quand les imprévus s'en mêlent, je te préviens en avance et je trouve une solution.</p></div>
+        </div>
+        <div class="cb-promise-card">
+          <span class="cb-promise-icon">✂️</span>
+          <div><p class="cb-promise-title">Un montage qui raconte quelque chose.</p><p class="cb-promise-text">Je ne coupe pas, je construis. Chaque épisode a un rythme, une intention, une cohérence.</p></div>
+        </div>
+        <div class="cb-promise-card">
+          <span class="cb-promise-icon">👁</span>
+          <div><p class="cb-promise-title">Un regard, pas juste une exécution.</p><p class="cb-promise-text">Si je vois quelque chose qui peut être meilleur, je te le dis. Tu restes décisionnaire, mais tu n'es pas seul·e.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="cb-portfolio-home">
+    <div class="cb-portfolio-header">
+      <div>
+        <span class="cb-portfolio-tag">Portfolio</span>
+        <h2 class="cb-portfolio-h2">Ce que je <em>monte.</em></h2>
+      </div>
+      <div class="cb-portfolio-filters">
+        <a href="pages/portfolio.html" class="cb-pill active">Tout voir</a>
+        <a href="pages/portfolio.html#podcast" class="cb-pill">Podcast</a>
+        <a href="pages/portfolio.html#cinema" class="cb-pill">Cinéma</a>
+        <a href="pages/portfolio.html#rs" class="cb-pill">Facecam & RS</a>
+      </div>
+    </div>
+
+    <div class="cb-grid-hero">
+      <div class="cb-ratio-169">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_1" allowfullscreen loading="lazy" title="Short podcast - émission hebdo"></iframe>
+        <div class="cb-vid-label">
+          <span class="cb-vid-cat cb-cat-podcast">Podcast · 16:9</span>
+          <p class="cb-vid-title">Short podcast — émission hebdo</p>
+        </div>
+      </div>
+      <div class="cb-ratio-916">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_2" allowfullscreen loading="lazy" title="Teaser RS vertical"></iframe>
+        <div class="cb-vid-label">
+          <span class="cb-vid-cat cb-cat-podcast">Podcast · 9:16</span>
+          <p class="cb-vid-title">Teaser RS vertical</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cb-grid-secondary">
+      <div class="cb-ratio-169">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_3" allowfullscreen loading="lazy" title="Facecam YouTube"></iframe>
+        <div class="cb-vid-label">
+          <span class="cb-vid-cat cb-cat-rs">Facecam · 16:9</span>
+          <p class="cb-vid-title">Facecam YouTube longue durée</p>
+        </div>
+      </div>
+      <div class="cb-ratio-169">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_4" allowfullscreen loading="lazy" title="Court-métrage fiction"></iframe>
+        <div class="cb-vid-label">
+          <span class="cb-vid-cat cb-cat-cine">Cinéma · 16:9</span>
+          <p class="cb-vid-title">Court-métrage fiction</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cb-portfolio-cta">
+      <span>Ce projet te parle ?</span>
+      <a href="pages/portfolio.html">Voir tout le portfolio →</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="cb-services-home">
+    <div class="cb-services-blob-1"></div>
+    <div class="cb-services-blob-2"></div>
+    <div class="cb-services-inner">
+      <span class="cb-services-tag">Services</span>
+      <h2 class="cb-services-h2">Comment je <em>travaille.</em></h2>
+      <div class="cb-services-grid">
+        <div class="cb-service-card">
+          <p class="cb-service-name">Montage & rythme</p>
+          <p class="cb-service-desc">Podcasts, interviews, facecams, documentaires — je structure pour que ça se regarde.</p>
+        </div>
+        <div class="cb-service-card">
+          <p class="cb-service-name">Habillage visuel</p>
+          <p class="cb-service-desc">Motion design, intros, textes animés — une identité qui s'entend et se voit.</p>
+        </div>
+        <div class="cb-service-card">
+          <p class="cb-service-name">Son & mixage</p>
+          <p class="cb-service-desc">Traitement audio, musique, ambiances — le son qu'on écoute sans s'en rendre compte.</p>
+        </div>
+        <div class="cb-service-card featured">
+          <div class="cb-service-top">
+            <p class="cb-service-name">Étalonnage</p>
+            <a href="pages/etalonnage.html" class="cb-service-link">Page dédiée →</a>
+          </div>
+          <p class="cb-service-desc">Colorimétrie cohérente et soignée — pour une image qui inspire confiance.</p>
+        </div>
+      </div>
+      <div class="cb-services-cta">
+        <a href="pages/services.html">Voir tous les services et les packs →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- A PROPOS -->
+  <section class="cb-about-home">
+    <div class="cb-about-blob"></div>
+    <div class="cb-about-inner">
+      <div class="cb-about-avatar">👤</div>
+      <div>
+        <span class="cb-about-tag">À propos</span>
+        <h2 class="cb-about-h2">Carla, monteuse <em>et étalonneuse.</em></h2>
+        <p class="cb-about-text">Je me suis formée au montage il y a un peu plus d'un an, après plusieurs années comme styliste-infographiste. Aujourd'hui je me suis spécialisée dans les formats conversationnels — podcasts, interviews, facecams, documentaires.</p>
+        <a href="pages/a-propos.html" class="cb-about-link">En savoir plus →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWREEL -->
+  <section class="cb-showreel">
+    <span class="cb-showreel-tag">Showreel 2025</span>
+    <p class="cb-showreel-text">3 minutes pour voir comment je travaille.</p>
+    <div class="cb-showreel-frame">
+      <iframe src="https://www.youtube.com/embed/ID_SHOWREEL" allowfullscreen loading="lazy" title="Showreel 2025 — Carla Blot"></iframe>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cb-cta-final">
+    <div class="cb-cta-blob-1"></div>
+    <div class="cb-cta-blob-2"></div>
+    <div class="cb-cta-content">
+      <span class="cb-cta-tag">Contact</span>
+      <h2 class="cb-cta-h2">Tu as un projet ?<br><em>Parlons-en.</em></h2>
+      <p class="cb-cta-text">Un appel de 30 minutes pour voir si on est faits pour travailler ensemble. Sans engagement.</p>
+      <a href="#LIEN_CALENDLY" class="cb-cta-btn">Réserver un appel gratuit</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="cb-footer">
+    <a href="index.html" class="cb-footer-logo">Carla <em>Blot</em></a>
+    <ul class="cb-footer-links">
+      <li><a href="https://instagram.com/TON_COMPTE">Instagram</a></li>
+      <li><a href="https://linkedin.com/in/TON_COMPTE">LinkedIn</a></li>
+      <li><a href="mailto:carlablm.pro@gmail.com">carlablm.pro@gmail.com</a></li>
+      <li><a href="#">Mentions légales</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Étalonnage — Carla Blot</title>
+  <meta name="description" content="Une image cohérente, une émotion qui se sent. L'étalonnage par Carla Blot.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shared.css">
+
+  <style>
+    .cb-et-hero { position: relative; padding: 64px 48px 56px; background: #FAFAF8; overflow: hidden; text-align: center; }
+    .cb-et-blob-1 { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: rgba(180,155,215,0.16); top: -100px; left: -60px; filter: blur(60px); pointer-events: none; }
+    .cb-et-blob-2 { position: absolute; width: 240px; height: 240px; border-radius: 50%; background: rgba(168,213,204,0.18); top: -60px; right: -50px; filter: blur(55px); pointer-events: none; }
+    .cb-et-hero-inner { position: relative; }
+    .cb-et-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 16px; display: block; }
+    .cb-et-h1 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.15; color: #1E2A2A; margin: 0 0 14px; }
+    .cb-et-h1 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-et-sub { font-size: 14px; color: #5A6B6B; line-height: 1.7; max-width: 520px; margin: 0 auto; }
+
+    .cb-et-comparison { padding: 48px 48px; background: #FAFAF8; }
+    .cb-et-comp-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 8px; display: block; text-align: center; }
+    .cb-et-comp-h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #1E2A2A; margin: 0 0 28px; text-align: center; }
+    .cb-et-comp-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-et-comp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .cb-et-comp-frame { position: relative; width: 100%; padding-top: 56.25%; border-radius: 10px; overflow: hidden; background-size: cover; background-position: center; }
+    .cb-et-comp-label { position: absolute; top: 10px; left: 10px; font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 10px; }
+    .cb-et-label-brut { background: rgba(0,0,0,0.4); color: #F5F0EC; }
+    .cb-et-label-final { background: rgba(232,137,106,0.9); color: #FAFAF8; }
+
+    .cb-et-styles { position: relative; padding: 48px 48px; background: #F5F3F0; overflow: hidden; }
+    .cb-et-styles-blob { position: absolute; width: 260px; height: 260px; border-radius: 50%; background: rgba(168,213,204,0.15); bottom: -80px; right: -50px; filter: blur(50px); pointer-events: none; }
+    .cb-et-styles-inner { position: relative; }
+    .cb-et-styles-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 8px; display: block; text-align: center; }
+    .cb-et-styles-h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #1E2A2A; margin: 0 0 6px; text-align: center; }
+    .cb-et-styles-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-et-styles-intro { font-size: 12px; color: #5A6B6B; text-align: center; margin: 0 0 24px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .cb-et-styles-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .cb-et-style-card { background: rgba(255,255,255,0.6); border-radius: 10px; overflow: hidden; }
+    .cb-et-style-img { height: 90px; }
+    .cb-et-style-content { padding: 12px; }
+    .cb-et-style-name { font-size: 12px; font-weight: 500; color: #1E2A2A; margin: 0 0 3px; }
+    .cb-et-style-desc { font-size: 11px; color: #5A6B6B; line-height: 1.5; margin: 0; }
+
+    .cb-et-cta { padding: 56px 48px; background: linear-gradient(160deg, #2B3A3A 0%, #1E2A2A 100%); text-align: center; position: relative; overflow: hidden; }
+    .cb-et-cta-blob { position: absolute; width: 240px; height: 240px; border-radius: 50%; background: rgba(180,155,215,0.12); top: -70px; right: -50px; filter: blur(45px); pointer-events: none; }
+    .cb-et-cta-inner { position: relative; }
+    .cb-et-cta-h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #F5F0EC; margin: 0 0 10px; }
+    .cb-et-cta-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-et-cta-text { font-size: 13px; color: #A8BCBC; margin: 0 0 22px; }
+    .cb-et-cta-btn { background: #E8896A; color: #FAFAF8; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 12px 28px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: transform 0.15s ease; }
+    .cb-et-cta-btn:hover { transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .cb-et-hero { padding: 48px 20px 40px; }
+      .cb-et-h1 { font-size: 28px; }
+      .cb-et-comparison { padding: 40px 20px; }
+      .cb-et-comp-row { grid-template-columns: 1fr; }
+      .cb-et-styles { padding: 40px 20px; }
+      .cb-et-styles-grid { grid-template-columns: 1fr; }
+      .cb-et-cta { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="cb-nav">
+    <a href="../index.html" class="cb-nav-logo">Carla <em>Blot</em></a>
+    <button class="cb-nav-toggle" onclick="this.parentNode.querySelector('.cb-nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="cb-nav-links">
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="etalonnage.html">Étalonnage</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="#LIEN_CALENDLY" class="cb-nav-cta">Travaillons ensemble</a></li>
+    </ul>
+  </nav>
+
+  <section class="cb-et-hero">
+    <div class="cb-et-blob-1"></div>
+    <div class="cb-et-blob-2"></div>
+    <div class="cb-et-hero-inner">
+      <span class="cb-et-tag">Étalonnage</span>
+      <h1 class="cb-et-h1">Une image cohérente.<br>Une <em>émotion</em> qui se sent.</h1>
+      <p class="cb-et-sub">L'étalonnage, c'est deux choses à la fois : l'harmonisation des couleurs d'un plan à l'autre, et la création d'un look qui sublime ton tournage. Une ambiance pensée pour servir ce que tu veux transmettre.</p>
+    </div>
+  </section>
+
+  <section class="cb-et-comparison">
+    <span class="cb-et-comp-tag">Avant / après</span>
+    <h2 class="cb-et-comp-h2">La différence se <em>voit.</em></h2>
+    <div class="cb-et-comp-row">
+      <div class="cb-et-comp-frame" style="background: linear-gradient(150deg,#6B6B62,#8A8A7E);">
+        <span class="cb-et-comp-label cb-et-label-brut">Brut</span>
+      </div>
+      <div class="cb-et-comp-frame" style="background: linear-gradient(150deg,#2B3A3A,#4A6B5F);">
+        <span class="cb-et-comp-label cb-et-label-final">Étalonné</span>
+      </div>
+    </div>
+    <div class="cb-et-comp-row">
+      <div class="cb-et-comp-frame" style="background: linear-gradient(150deg,#7A6E5C,#A0917A);">
+        <span class="cb-et-comp-label cb-et-label-brut">Brut</span>
+      </div>
+      <div class="cb-et-comp-frame" style="background: linear-gradient(150deg,#3D2A1A,#8A5A35);">
+        <span class="cb-et-comp-label cb-et-label-final">Étalonné</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-et-styles">
+    <div class="cb-et-styles-blob"></div>
+    <div class="cb-et-styles-inner">
+      <span class="cb-et-styles-tag">Styles proposés</span>
+      <h2 class="cb-et-styles-h2">Une <em>ambiance</em> pour chaque histoire.</h2>
+      <p class="cb-et-styles-intro">Chaque projet porte une intention différente — le look doit la servir, pas la couvrir.</p>
+      <div class="cb-et-styles-grid">
+        <div class="cb-et-style-card">
+          <div class="cb-et-style-img" style="background: linear-gradient(150deg,#2B3A3A,#4A6B5F);"></div>
+          <div class="cb-et-style-content">
+            <p class="cb-et-style-name">Naturel & chaleureux</p>
+            <p class="cb-et-style-desc">Pour donner envie de rester, comme dans une conversation entre amis.</p>
+          </div>
+        </div>
+        <div class="cb-et-style-card">
+          <div class="cb-et-style-img" style="background: linear-gradient(150deg,#1A2438,#2E4A6B);"></div>
+          <div class="cb-et-style-content">
+            <p class="cb-et-style-name">Cinéma & contraste</p>
+            <p class="cb-et-style-desc">Pour donner du poids à une histoire qui mérite d'être prise au sérieux.</p>
+          </div>
+        </div>
+        <div class="cb-et-style-card">
+          <div class="cb-et-style-img" style="background: linear-gradient(150deg,#3D2A1A,#8A5A35);"></div>
+          <div class="cb-et-style-content">
+            <p class="cb-et-style-name">Vif & punchy</p>
+            <p class="cb-et-style-desc">Pour capter l'attention dès la première seconde et ne plus la lâcher.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-et-cta">
+    <div class="cb-et-cta-blob"></div>
+    <div class="cb-et-cta-inner">
+      <h2 class="cb-et-cta-h2">Ton image mérite <em>le bon traitement.</em></h2>
+      <p class="cb-et-cta-text">Discutons de la direction qui correspond à ton univers.</p>
+      <a href="#LIEN_CALENDLY" class="cb-et-cta-btn">Réserver un appel gratuit</a>
+    </div>
+  </section>
+
+  <footer class="cb-footer">
+    <a href="../index.html" class="cb-footer-logo">Carla <em>Blot</em></a>
+    <ul class="cb-footer-links">
+      <li><a href="https://instagram.com/TON_COMPTE">Instagram</a></li>
+      <li><a href="https://linkedin.com/in/TON_COMPTE">LinkedIn</a></li>
+      <li><a href="mailto:carlablm.pro@gmail.com">carlablm.pro@gmail.com</a></li>
+      <li><a href="#">Mentions légales</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Carla Blot</title>
+  <meta name="description" content="Podcasts, cinéma & artistique, facecam & formats réseaux sociaux — le portfolio de Carla Blot.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shared.css">
+
+  <style>
+    .cb-pf-hero { position: relative; padding: 56px 48px 32px; background: #FAFAF8; overflow: hidden; text-align: center; }
+    .cb-pf-blob-1 { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: rgba(180,155,215,0.16); top: -100px; right: -60px; filter: blur(60px); pointer-events: none; }
+    .cb-pf-blob-2 { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: rgba(168,213,204,0.18); top: -50px; left: -50px; filter: blur(55px); pointer-events: none; }
+    .cb-pf-hero-inner { position: relative; }
+    .cb-pf-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 14px; display: block; }
+    .cb-pf-h1 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; line-height: 1.15; color: #1E2A2A; margin: 0 0 12px; }
+    .cb-pf-h1 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-pf-sub { font-size: 13px; color: #5A6B6B; line-height: 1.7; max-width: 460px; margin: 0 auto; }
+
+    .cb-pf-filters { padding: 0 48px 32px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; background: #FAFAF8; }
+    .cb-pf-pill { font-size: 11px; font-weight: 500; padding: 6px 14px; border-radius: 20px; border: 0.5px solid rgba(30,42,42,0.2); color: #5A6B6B; background: #FAFAF8; cursor: pointer; text-decoration: none; }
+    .cb-pf-pill.active { background: #1E2A2A; color: #FAFAF8; border-color: #1E2A2A; }
+
+    .cb-pf-section { padding: 40px 48px; background: #FAFAF8; }
+    .cb-pf-section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+    .cb-pf-section-h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #1E2A2A; margin: 0; }
+    .cb-pf-section-sub { font-size: 11px; color: #5A6B6B; margin: 0; }
+    .cb-pf-row-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .cb-pf-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .cb-pf-169 { position: relative; width: 100%; padding-top: 56.25%; border-radius: 10px; overflow: hidden; background: #1E2A2A; }
+    .cb-pf-916 { position: relative; width: 100%; padding-top: 177.77%; border-radius: 10px; overflow: hidden; background: #1E2A2A; }
+    .cb-pf-169 iframe, .cb-pf-916 iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .cb-pf-vlabel { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(10,14,14,0.75) 0%, transparent 100%); z-index: 2; pointer-events: none; }
+    .cb-pf-vcat { font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 5px; background: rgba(168,213,204,0.3); color: #A8D5CC; }
+    .cb-pf-vcat-cine { font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 5px; background: rgba(180,155,215,0.3); color: #C4B4E8; }
+    .cb-pf-vcat-rs { font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 5px; background: rgba(232,137,106,0.25); color: #E8896A; }
+    .cb-pf-vtitle { font-size: 12px; font-weight: 500; color: #F5F0EC; margin: 0; }
+    .cb-pf-vtitle-sm { font-size: 11px; font-weight: 500; color: #F5F0EC; margin: 0; }
+    .cb-pf-vsub { font-size: 11px; color: #A8C5C0; margin: 2px 0 0; }
+
+    .cb-pf-cine { position: relative; padding: 40px 48px; background: #F5F3F0; overflow: hidden; }
+    .cb-pf-cine-blob { position: absolute; width: 240px; height: 240px; border-radius: 50%; background: rgba(180,155,215,0.12); bottom: -70px; right: -50px; filter: blur(50px); pointer-events: none; }
+    .cb-pf-cine-inner { position: relative; }
+    .cb-pf-cine-row1 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .cb-pf-cine-row2 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+
+    .cb-pf-rs { padding: 40px 48px; background: #FAFAF8; }
+    .cb-pf-rs-row1 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .cb-pf-rs-row2 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+
+    .cb-pf-cta { padding: 56px 48px; background: linear-gradient(160deg, #2B3A3A 0%, #1E2A2A 100%); text-align: center; position: relative; overflow: hidden; }
+    .cb-pf-cta-blob { position: absolute; width: 240px; height: 240px; border-radius: 50%; background: rgba(180,155,215,0.12); top: -70px; right: -50px; filter: blur(45px); pointer-events: none; }
+    .cb-pf-cta-inner { position: relative; }
+    .cb-pf-cta-h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #F5F0EC; margin: 0 0 10px; }
+    .cb-pf-cta-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-pf-cta-text { font-size: 13px; color: #A8BCBC; margin: 0 0 22px; }
+    .cb-pf-cta-btn { background: #E8896A; color: #FAFAF8; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 12px 28px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: transform 0.15s ease; }
+    .cb-pf-cta-btn:hover { transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .cb-pf-hero { padding: 48px 20px 24px; }
+      .cb-pf-h1 { font-size: 26px; }
+      .cb-pf-filters { padding: 0 20px 24px; }
+      .cb-pf-section, .cb-pf-cine, .cb-pf-rs { padding: 32px 20px; }
+      .cb-pf-row-2-1, .cb-pf-row-2, .cb-pf-cine-row1, .cb-pf-cine-row2, .cb-pf-rs-row1, .cb-pf-rs-row2 { grid-template-columns: 1fr; }
+      .cb-pf-916 { padding-top: 56.25%; }
+      .cb-pf-cta { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="cb-nav">
+    <a href="../index.html" class="cb-nav-logo">Carla <em>Blot</em></a>
+    <button class="cb-nav-toggle" onclick="this.parentNode.querySelector('.cb-nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="cb-nav-links">
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="etalonnage.html">Étalonnage</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="#LIEN_CALENDLY" class="cb-nav-cta">Travaillons ensemble</a></li>
+    </ul>
+  </nav>
+
+  <section class="cb-pf-hero">
+    <div class="cb-pf-blob-1"></div>
+    <div class="cb-pf-blob-2"></div>
+    <div class="cb-pf-hero-inner">
+      <span class="cb-pf-tag">Portfolio</span>
+      <h1 class="cb-pf-h1">Ce que je <em>monte.</em></h1>
+      <p class="cb-pf-sub">Formats conversationnels, documentaires, projets cinématographiques — chaque montage a sa propre intention.</p>
+    </div>
+  </section>
+
+  <div class="cb-pf-filters">
+    <a href="#podcast" class="cb-pf-pill active">Tout voir</a>
+    <a href="#podcast" class="cb-pf-pill">Podcast</a>
+    <a href="#cinema" class="cb-pf-pill">Cinéma & artistique</a>
+    <a href="#rs" class="cb-pf-pill">Facecam & RS</a>
+  </div>
+
+  <!-- PODCAST -->
+  <section class="cb-pf-section" id="podcast">
+    <div class="cb-pf-section-header">
+      <h2 class="cb-pf-section-h2">Podcast</h2>
+      <span class="cb-pf-section-sub">Format long · shorts verticaux · teasers RS</span>
+    </div>
+    <div class="cb-pf-row-2-1">
+      <div class="cb-pf-169">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_1" allowfullscreen loading="lazy" title="Short podcast émission hebdo"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat">16:9 · Format long</span>
+          <p class="cb-pf-vtitle">Short podcast — émission hebdo</p>
+          <p class="cb-pf-vsub">Extrait pour driver l'audience vers l'épisode</p>
+        </div>
+      </div>
+      <div class="cb-pf-916">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_2" allowfullscreen loading="lazy" title="Teaser RS"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat">9:16 · Teaser</span>
+          <p class="cb-pf-vtitle">Teaser RS sur les réseaux</p>
+        </div>
+      </div>
+    </div>
+    <div class="cb-pf-row-2">
+      <div class="cb-pf-169">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_3" allowfullscreen loading="lazy" title="Podcast RH et industrie"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat">16:9</span>
+          <p class="cb-pf-vtitle">Podcast — RH et industrie</p>
+        </div>
+      </div>
+      <div class="cb-pf-169">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_4" allowfullscreen loading="lazy" title="Conférence franco-brésilienne"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat">16:9 · Conférence</span>
+          <p class="cb-pf-vtitle">Conférence franco-brésilienne</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CINEMA -->
+  <section class="cb-pf-cine" id="cinema">
+    <div class="cb-pf-cine-blob"></div>
+    <div class="cb-pf-cine-inner">
+      <div class="cb-pf-section-header">
+        <h2 class="cb-pf-section-h2">Cinéma & artistique</h2>
+        <span class="cb-pf-section-sub">Courts-métrages · documentaires · mode · culture</span>
+      </div>
+      <div class="cb-pf-cine-row1">
+        <div class="cb-pf-169">
+          <iframe src="https://www.youtube.com/embed/ID_VIDEO_5" allowfullscreen loading="lazy" title="Teaser fiction"></iframe>
+          <div class="cb-pf-vlabel">
+            <span class="cb-pf-vcat-cine">16:9 · Fiction</span>
+            <p class="cb-pf-vtitle">Teaser fiction — stratégie & arts martiaux</p>
+          </div>
+        </div>
+        <div class="cb-pf-169">
+          <iframe src="https://www.youtube.com/embed/ID_VIDEO_6" allowfullscreen loading="lazy" title="Short cinématographique"></iframe>
+          <div class="cb-pf-vlabel">
+            <span class="cb-pf-vcat-cine">16:9 · Documentaire</span>
+            <p class="cb-pf-vtitle">Short cinématographique</p>
+          </div>
+        </div>
+      </div>
+      <div class="cb-pf-cine-row2">
+        <div class="cb-pf-916">
+          <iframe src="https://www.youtube.com/embed/ID_VIDEO_7" allowfullscreen loading="lazy" title="Trailer mode"></iframe>
+          <div class="cb-pf-vlabel">
+            <span class="cb-pf-vcat-cine" style="font-size:9px;">Mode</span>
+            <p class="cb-pf-vtitle-sm">Trailer collection black & white</p>
+          </div>
+        </div>
+        <div class="cb-pf-916">
+          <iframe src="https://www.youtube.com/embed/ID_VIDEO_8" allowfullscreen loading="lazy" title="Le saviez-vous"></iframe>
+          <div class="cb-pf-vlabel">
+            <span class="cb-pf-vcat-cine" style="font-size:9px;">Culture</span>
+            <p class="cb-pf-vtitle-sm">Le saviez-vous</p>
+          </div>
+        </div>
+        <div class="cb-pf-916">
+          <iframe src="https://www.youtube.com/embed/ID_VIDEO_9" allowfullscreen loading="lazy" title="Mini-vlog Togo"></iframe>
+          <div class="cb-pf-vlabel">
+            <span class="cb-pf-vcat-cine" style="font-size:9px;">Vlog</span>
+            <p class="cb-pf-vtitle-sm">Mini-vlog Togo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACECAM & RS -->
+  <section class="cb-pf-rs" id="rs">
+    <div class="cb-pf-section-header">
+      <h2 class="cb-pf-section-h2">Facecam & formats RS</h2>
+      <span class="cb-pf-section-sub">YouTube · talking head · shorts</span>
+    </div>
+    <div class="cb-pf-rs-row1">
+      <div class="cb-pf-169">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_10" allowfullscreen loading="lazy" title="Facecam YouTube longue durée"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat-rs">16:9</span>
+          <p class="cb-pf-vtitle">Facecam YouTube longue durée</p>
+          <p class="cb-pf-vsub" style="color:#F2C4A8;">Montage et animation graphique</p>
+        </div>
+      </div>
+      <div class="cb-pf-169">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_11" allowfullscreen loading="lazy" title="Intro teaser de podcast"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat-rs">16:9 · Intro</span>
+          <p class="cb-pf-vtitle">Intro teaser de podcast</p>
+        </div>
+      </div>
+    </div>
+    <div class="cb-pf-rs-row2">
+      <div class="cb-pf-916">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_12" allowfullscreen loading="lazy" title="Capsule musicale"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat-rs" style="font-size:9px;">Capsule</span>
+          <p class="cb-pf-vtitle-sm">Capsule musicale</p>
+        </div>
+      </div>
+      <div class="cb-pf-916">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_13" allowfullscreen loading="lazy" title="Review documentaire"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat-rs" style="font-size:9px;">Review</span>
+          <p class="cb-pf-vtitle-sm">Review documentaire</p>
+        </div>
+      </div>
+      <div class="cb-pf-916">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO_14" allowfullscreen loading="lazy" title="Portrait documentaire"></iframe>
+        <div class="cb-pf-vlabel">
+          <span class="cb-pf-vcat-rs" style="font-size:9px;">Portrait</span>
+          <p class="cb-pf-vtitle-sm">Portrait documentaire</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-pf-cta">
+    <div class="cb-pf-cta-blob"></div>
+    <div class="cb-pf-cta-inner">
+      <h2 class="cb-pf-cta-h2">Ce projet te parle ?<br><em>Parlons-en.</em></h2>
+      <p class="cb-pf-cta-text">Un appel de 30 minutes pour voir si on est faits pour travailler ensemble.</p>
+      <a href="#LIEN_CALENDLY" class="cb-pf-cta-btn">Réserver un appel gratuit</a>
+    </div>
+  </section>
+
+  <footer class="cb-footer">
+    <a href="../index.html" class="cb-footer-logo">Carla <em>Blot</em></a>
+    <ul class="cb-footer-links">
+      <li><a href="https://instagram.com/TON_COMPTE">Instagram</a></li>
+      <li><a href="https://linkedin.com/in/TON_COMPTE">LinkedIn</a></li>
+      <li><a href="mailto:carlablm.pro@gmail.com">carlablm.pro@gmail.com</a></li>
+      <li><a href="#">Mentions légales</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Carla Blot</title>
+  <meta name="description" content="Des formules simples, adaptées à toi. Les packs de Carla Blot, monteuse et étalonneuse.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shared.css">
+
+  <style>
+    .cb-sv-hero { position: relative; padding: 56px 48px 40px; background: #FAFAF8; overflow: hidden; text-align: center; }
+    .cb-sv-blob { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: rgba(180,155,215,0.16); top: -100px; right: -60px; filter: blur(60px); pointer-events: none; }
+    .cb-sv-hero-inner { position: relative; }
+    .cb-sv-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 14px; display: block; }
+    .cb-sv-h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; line-height: 1.15; color: #1E2A2A; margin: 0 0 12px; }
+    .cb-sv-h1 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-sv-sub { font-size: 13px; color: #5A6B6B; line-height: 1.7; max-width: 460px; margin: 0 auto; }
+
+    .cb-sv-packs { padding: 40px 40px; background: #FAFAF8; }
+    .cb-sv-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .cb-sv-pack { background: rgba(255,255,255,0.7); border: 0.5px solid rgba(30,42,42,0.1); border-radius: 12px; padding: 20px 16px; display: flex; flex-direction: column; }
+    .cb-sv-pack-label { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: #7BAAA3; margin: 0 0 8px; }
+    .cb-sv-pack-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #1E2A2A; margin: 0 0 6px; line-height: 1.3; }
+    .cb-sv-pack-title em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-sv-pack-desc { font-size: 11px; color: #5A6B6B; line-height: 1.6; margin: 0 0 14px; }
+    .cb-sv-check { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px; }
+    .cb-sv-check-icon { color: #7BAAA3; font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+    .cb-sv-check-text { font-size: 11px; color: #5A6B6B; line-height: 1.5; margin: 0; }
+    .cb-sv-pack-price { font-size: 10px; color: #9B8EC4; margin: 10px 0 0; }
+
+    .cb-sv-pack.featured { background: #1E2A2A; border: 2px solid #E8896A; position: relative; }
+    .cb-sv-pack.featured .cb-sv-pack-label { color: #E8896A; }
+    .cb-sv-pack.featured .cb-sv-pack-title { color: #F5F0EC; }
+    .cb-sv-pack.featured .cb-sv-pack-title em { color: #F2C4B0; }
+    .cb-sv-pack.featured .cb-sv-pack-desc { color: #A8BCBC; }
+    .cb-sv-pack.featured .cb-sv-check-icon { color: #A8D5CC; }
+    .cb-sv-pack.featured .cb-sv-check-text { color: #D5E0E0; }
+    .cb-sv-pack.featured .cb-sv-pack-price { color: #E8896A; }
+    .cb-sv-badge { position: absolute; top: -10px; left: 16px; background: #E8896A; color: #FAFAF8; font-size: 9px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 10px; }
+    .cb-sv-note { text-align: center; font-size: 11px; color: #5A6B6B; margin: 18px 0 0; }
+
+    .cb-sv-carte { position: relative; padding: 40px 48px; background: #F5F3F0; overflow: hidden; }
+    .cb-sv-carte-blob { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: rgba(168,213,204,0.15); top: -60px; left: -40px; filter: blur(45px); pointer-events: none; }
+    .cb-sv-carte-inner { position: relative; }
+    .cb-sv-carte-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 8px; display: block; text-align: center; }
+    .cb-sv-carte-h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #1E2A2A; margin: 0 0 20px; text-align: center; }
+    .cb-sv-carte-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-sv-carte-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .cb-sv-carte-item { background: rgba(255,255,255,0.6); border-radius: 10px; padding: 14px 16px; }
+    .cb-sv-carte-item.featured { border: 0.5px solid #E8896A; }
+    .cb-sv-carte-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .cb-sv-carte-name { font-size: 12px; font-weight: 500; color: #1E2A2A; margin: 0 0 4px; }
+    .cb-sv-carte-desc { font-size: 11px; color: #5A6B6B; line-height: 1.5; margin: 0; }
+    .cb-sv-carte-link { font-size: 9px; font-weight: 500; background: #FAEAE4; color: #A0492A; padding: 3px 8px; border-radius: 10px; white-space: nowrap; text-decoration: none; }
+
+    .cb-sv-cta { padding: 48px 48px; background: linear-gradient(160deg, #2B3A3A 0%, #1E2A2A 100%); text-align: center; }
+    .cb-sv-cta-h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #F5F0EC; margin: 0 0 10px; }
+    .cb-sv-cta-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-sv-cta-text { font-size: 12px; color: #A8BCBC; margin: 0 0 20px; }
+    .cb-sv-cta-btn { background: #E8896A; color: #FAFAF8; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 11px 26px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; }
+
+    @media (max-width: 768px) {
+      .cb-sv-hero { padding: 48px 20px 32px; }
+      .cb-sv-h1 { font-size: 26px; }
+      .cb-sv-packs { padding: 32px 20px; }
+      .cb-sv-grid { grid-template-columns: 1fr; }
+      .cb-sv-carte { padding: 32px 20px; }
+      .cb-sv-carte-grid { grid-template-columns: 1fr; }
+      .cb-sv-cta { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="cb-nav">
+    <a href="../index.html" class="cb-nav-logo">Carla <em>Blot</em></a>
+    <button class="cb-nav-toggle" onclick="this.parentNode.querySelector('.cb-nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="cb-nav-links">
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="etalonnage.html">Étalonnage</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="#LIEN_CALENDLY" class="cb-nav-cta">Travaillons ensemble</a></li>
+    </ul>
+  </nav>
+
+  <section class="cb-sv-hero">
+    <div class="cb-sv-blob"></div>
+    <div class="cb-sv-hero-inner">
+      <span class="cb-sv-tag">Services</span>
+      <h1 class="cb-sv-h1">Des formules <em>simples,</em><br>adaptées à toi.</h1>
+      <p class="cb-sv-sub">Les packs ci-dessous sont des points de départ. On les ajuste toujours ensemble selon ton format et ton rythme de publication.</p>
+    </div>
+  </section>
+
+  <section class="cb-sv-packs">
+    <div class="cb-sv-grid">
+      <div class="cb-sv-pack">
+        <p class="cb-sv-pack-label">Essentiel</p>
+        <p class="cb-sv-pack-title">Un épisode,<br><em>prêt à publier.</em></p>
+        <p class="cb-sv-pack-desc">Pour démarrer ou pour un besoin ponctuel.</p>
+        <div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Montage de l'épisode complet</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Habillage visuel de base</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Mixage son</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Audio .mp3 prêt pour les plateformes d'écoute</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Transcript écrit</span></div>
+        </div>
+        <p class="cb-sv-pack-price">À partir de — sur devis</p>
+      </div>
+
+      <div class="cb-sv-pack featured">
+        <span class="cb-sv-badge">Le plus choisi</span>
+        <p class="cb-sv-pack-label" style="margin-top:6px;">Complet</p>
+        <p class="cb-sv-pack-title">Un épisode,<br><em>qui vit sur les réseaux.</em></p>
+        <p class="cb-sv-pack-desc">Pour une vraie présence autour de chaque sortie.</p>
+        <div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Montage de l'épisode complet</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">3 shorts verticaux</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">1 teaser réseaux sociaux</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Intro simple</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Habillage visuel & mixage son</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Audio .mp3 + transcript écrit</span></div>
+        </div>
+        <p class="cb-sv-pack-price">À partir de — sur devis</p>
+      </div>
+
+      <div class="cb-sv-pack">
+        <p class="cb-sv-pack-label">Présence</p>
+        <p class="cb-sv-pack-title">Un épisode,<br><em>qui occupe le terrain.</em></p>
+        <p class="cb-sv-pack-desc">Pour maximiser la visibilité de chaque sortie.</p>
+        <div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Montage de l'épisode complet</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">5 à 6 shorts verticaux</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">2 extraits horizontaux — meilleurs moments</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Intro travaillée — recadrage & textes animés</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Teaser réseaux sociaux</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Habillage visuel & mixage son</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Audio .mp3 + transcript écrit</span></div>
+        </div>
+        <p class="cb-sv-pack-price">À partir de — sur devis</p>
+      </div>
+    </div>
+    <p class="cb-sv-note">Tous les packs incluent un échange préalable pour ajuster le contenu à ton besoin réel.</p>
+  </section>
+
+  <section class="cb-sv-carte">
+    <div class="cb-sv-carte-blob"></div>
+    <div class="cb-sv-carte-inner">
+      <span class="cb-sv-carte-tag">Sur demande</span>
+      <h2 class="cb-sv-carte-h2">Pour aller <em>plus loin.</em></h2>
+      <div class="cb-sv-carte-grid">
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Miniature</p>
+          <p class="cb-sv-carte-desc">Pensée pour capter le clic sur chaque plateforme.</p>
+        </div>
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Extrait teasing Spotify</p>
+          <p class="cb-sv-carte-desc">Un court extrait audio pour donner envie d'écouter.</p>
+        </div>
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Sous-titres incrustés</p>
+          <p class="cb-sv-carte-desc">Pour les formats courts — essentiel sur les réseaux.</p>
+        </div>
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Montage seul</p>
+          <p class="cb-sv-carte-desc">Format long, sans déclinaisons réseaux.</p>
+        </div>
+        <div class="cb-sv-carte-item featured">
+          <div class="cb-sv-carte-top">
+            <p class="cb-sv-carte-name">Étalonnage seul</p>
+            <a href="etalonnage.html" class="cb-sv-carte-link">Page dédiée →</a>
+          </div>
+          <p class="cb-sv-carte-desc">En complément d'un montage existant.</p>
+        </div>
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Volume mensuel</p>
+          <p class="cb-sv-carte-desc">Plusieurs épisodes réguliers — tarif dégressif.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-sv-cta">
+    <h2 class="cb-sv-cta-h2">On trouve la formule <em>qui te va ?</em></h2>
+    <p class="cb-sv-cta-text">Un appel de 30 minutes pour cadrer ton besoin et établir un devis.</p>
+    <a href="#LIEN_CALENDLY" class="cb-sv-cta-btn">Réserver un appel gratuit</a>
+  </section>
+
+  <footer class="cb-footer">
+    <a href="../index.html" class="cb-footer-logo">Carla <em>Blot</em></a>
+    <ul class="cb-footer-links">
+      <li><a href="https://instagram.com/TON_COMPTE">Instagram</a></li>
+      <li><a href="https://linkedin.com/in/TON_COMPTE">LinkedIn</a></li>
+      <li><a href="mailto:carlablm.pro@gmail.com">carlablm.pro@gmail.com</a></li>
+      <li><a href="#">Mentions légales</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
