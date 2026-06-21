@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Carla Blot</title>
+  <meta name="description" content="Des formules simples, adaptées à toi. Les packs de Carla Blot, monteuse et étalonneuse.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== STYLES PARTAGÉS (nav, footer, base) ===== */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'DM Sans', sans-serif; background: #FAFAF8; }
+    .cb-nav { position: sticky; top: 0; z-index: 999; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(30,42,42,0.08); padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .cb-nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #1E2A2A; text-decoration: none; transition: opacity 0.2s ease; }
+    .cb-nav-logo:hover { opacity: 0.75; }
+    .cb-nav-logo em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+    .cb-nav-links a { font-size: 13px; color: #5A6B6B; text-decoration: none; transition: color 0.2s ease; }
+    .cb-nav-links a:hover { color: #1E2A2A; }
+    .cb-nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; background: #1E2A2A; color: #FAFAF8 !important; padding: 9px 18px; border-radius: 3px; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease; }
+    .cb-nav-cta:hover { background: #E8896A !important; transform: translateY(-1px); }
+    .cb-nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .cb-nav-toggle span { display: block; width: 22px; height: 2px; background: #1E2A2A; border-radius: 2px; }
+    @media (max-width: 768px) {
+      .cb-nav { padding: 14px 20px; position: relative; }
+      .cb-nav-toggle { display: flex; }
+      .cb-nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #FAFAF8; flex-direction: column; align-items: flex-start; padding: 16px 20px 20px; border-bottom: 0.5px solid rgba(30,42,42,0.08); gap: 16px; }
+      .cb-nav-links.open { display: flex; }
+    }
+    .cb-footer { padding: 24px 48px; background: #162020; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .cb-footer-logo { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #C4B4E8; text-decoration: none; }
+    .cb-footer-logo em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-footer-links { display: flex; gap: 22px; align-items: center; list-style: none; margin: 0; padding: 0; }
+    .cb-footer-links a { font-size: 11px; color: #9B8EC4; text-decoration: none; transition: opacity 0.2s; }
+    .cb-footer-links a:hover { opacity: 0.7; }
+    @media (max-width: 768px) { .cb-footer { padding: 20px 20px; flex-direction: column; text-align: center; } }
+    .cb-sv-hero { position: relative; padding: 56px 48px 40px; background: #FAFAF8; overflow: hidden; text-align: center; }
+    .cb-sv-blob { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: rgba(180,155,215,0.16); top: -100px; right: -60px; filter: blur(60px); pointer-events: none; }
+    .cb-sv-hero-inner { position: relative; }
+    .cb-sv-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 14px; display: block; }
+    .cb-sv-h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; line-height: 1.15; color: #1E2A2A; margin: 0 0 12px; }
+    .cb-sv-h1 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-sv-sub { font-size: 13px; color: #5A6B6B; line-height: 1.7; max-width: 460px; margin: 0 auto; }
+
+    .cb-sv-packs { padding: 40px 40px; background: #FAFAF8; }
+    .cb-sv-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .cb-sv-pack { background: rgba(255,255,255,0.7); border: 0.5px solid rgba(30,42,42,0.1); border-radius: 12px; padding: 20px 16px; display: flex; flex-direction: column; }
+    .cb-sv-pack-label { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: #7BAAA3; margin: 0 0 8px; }
+    .cb-sv-pack-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #1E2A2A; margin: 0 0 6px; line-height: 1.3; }
+    .cb-sv-pack-title em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-sv-pack-desc { font-size: 11px; color: #5A6B6B; line-height: 1.6; margin: 0 0 14px; }
+    .cb-sv-check { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px; }
+    .cb-sv-check-icon { color: #7BAAA3; font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+    .cb-sv-check-text { font-size: 11px; color: #5A6B6B; line-height: 1.5; margin: 0; }
+    .cb-sv-pack-price { font-size: 10px; color: #9B8EC4; margin: 10px 0 0; }
+
+    .cb-sv-pack.featured { background: #1E2A2A; border: 2px solid #E8896A; position: relative; }
+    .cb-sv-pack.featured .cb-sv-pack-label { color: #E8896A; }
+    .cb-sv-pack.featured .cb-sv-pack-title { color: #F5F0EC; }
+    .cb-sv-pack.featured .cb-sv-pack-title em { color: #F2C4B0; }
+    .cb-sv-pack.featured .cb-sv-pack-desc { color: #A8BCBC; }
+    .cb-sv-pack.featured .cb-sv-check-icon { color: #A8D5CC; }
+    .cb-sv-pack.featured .cb-sv-check-text { color: #D5E0E0; }
+    .cb-sv-pack.featured .cb-sv-pack-price { color: #E8896A; }
+    .cb-sv-badge { position: absolute; top: -10px; left: 16px; background: #E8896A; color: #FAFAF8; font-size: 9px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 10px; }
+    .cb-sv-note { text-align: center; font-size: 11px; color: #5A6B6B; margin: 18px 0 0; }
+
+    .cb-sv-carte { position: relative; padding: 40px 48px; background: #F5F3F0; overflow: hidden; }
+    .cb-sv-carte-blob { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: rgba(168,213,204,0.15); top: -60px; left: -40px; filter: blur(45px); pointer-events: none; }
+    .cb-sv-carte-inner { position: relative; }
+    .cb-sv-carte-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 8px; display: block; text-align: center; }
+    .cb-sv-carte-h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #1E2A2A; margin: 0 0 20px; text-align: center; }
+    .cb-sv-carte-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-sv-carte-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .cb-sv-carte-item { background: rgba(255,255,255,0.6); border-radius: 10px; padding: 14px 16px; }
+    .cb-sv-carte-item.featured { border: 0.5px solid #E8896A; }
+    .cb-sv-carte-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .cb-sv-carte-name { font-size: 12px; font-weight: 500; color: #1E2A2A; margin: 0 0 4px; }
+    .cb-sv-carte-desc { font-size: 11px; color: #5A6B6B; line-height: 1.5; margin: 0; }
+    .cb-sv-carte-link { font-size: 9px; font-weight: 500; background: #FAEAE4; color: #A0492A; padding: 3px 8px; border-radius: 10px; white-space: nowrap; text-decoration: none; }
+
+    .cb-sv-cta { padding: 48px 48px; background: linear-gradient(160deg, #2B3A3A 0%, #1E2A2A 100%); text-align: center; }
+    .cb-sv-cta-h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #F5F0EC; margin: 0 0 10px; }
+    .cb-sv-cta-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-sv-cta-text { font-size: 12px; color: #A8BCBC; margin: 0 0 20px; }
+    .cb-sv-cta-btn { background: #E8896A; color: #FAFAF8; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 11px 26px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; }
+
+    @media (max-width: 768px) {
+      .cb-sv-hero { padding: 48px 20px 32px; }
+      .cb-sv-h1 { font-size: 26px; }
+      .cb-sv-packs { padding: 32px 20px; }
+      .cb-sv-grid { grid-template-columns: 1fr; }
+      .cb-sv-carte { padding: 32px 20px; }
+      .cb-sv-carte-grid { grid-template-columns: 1fr; }
+      .cb-sv-cta { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="cb-nav">
+    <a href="index.html" class="cb-nav-logo">Carla <em>Blot</em></a>
+    <button class="cb-nav-toggle" onclick="this.parentNode.querySelector('.cb-nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="cb-nav-links">
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="etalonnage.html">Étalonnage</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="#LIEN_CALENDLY" class="cb-nav-cta">Travaillons ensemble</a></li>
+    </ul>
+  </nav>
+
+  <section class="cb-sv-hero">
+    <div class="cb-sv-blob"></div>
+    <div class="cb-sv-hero-inner">
+      <span class="cb-sv-tag">Services</span>
+      <h1 class="cb-sv-h1">Des formules <em>simples,</em><br>adaptées à toi.</h1>
+      <p class="cb-sv-sub">Les packs ci-dessous sont des points de départ. On les ajuste toujours ensemble selon ton format et ton rythme de publication.</p>
+    </div>
+  </section>
+
+  <section class="cb-sv-packs">
+    <div class="cb-sv-grid">
+      <div class="cb-sv-pack">
+        <p class="cb-sv-pack-label">Essentiel</p>
+        <p class="cb-sv-pack-title">Un épisode,<br><em>prêt à publier.</em></p>
+        <p class="cb-sv-pack-desc">Pour démarrer ou pour un besoin ponctuel.</p>
+        <div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Montage de l'épisode complet</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Habillage visuel de base</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Mixage son</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Audio .mp3 prêt pour les plateformes d'écoute</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Transcript écrit</span></div>
+        </div>
+        <p class="cb-sv-pack-price">À partir de — sur devis</p>
+      </div>
+
+      <div class="cb-sv-pack featured">
+        <span class="cb-sv-badge">Le plus choisi</span>
+        <p class="cb-sv-pack-label" style="margin-top:6px;">Complet</p>
+        <p class="cb-sv-pack-title">Un épisode,<br><em>qui vit sur les réseaux.</em></p>
+        <p class="cb-sv-pack-desc">Pour une vraie présence autour de chaque sortie.</p>
+        <div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Montage de l'épisode complet</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">3 shorts verticaux</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">1 teaser réseaux sociaux</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Intro simple</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Habillage visuel & mixage son</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Audio .mp3 + transcript écrit</span></div>
+        </div>
+        <p class="cb-sv-pack-price">À partir de — sur devis</p>
+      </div>
+
+      <div class="cb-sv-pack">
+        <p class="cb-sv-pack-label">Présence</p>
+        <p class="cb-sv-pack-title">Un épisode,<br><em>qui occupe le terrain.</em></p>
+        <p class="cb-sv-pack-desc">Pour maximiser la visibilité de chaque sortie.</p>
+        <div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Montage de l'épisode complet</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">5 à 6 shorts verticaux</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">2 extraits horizontaux — meilleurs moments</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Intro travaillée — recadrage & textes animés</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Teaser réseaux sociaux</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Habillage visuel & mixage son</span></div>
+          <div class="cb-sv-check"><span class="cb-sv-check-icon">✓</span><span class="cb-sv-check-text">Audio .mp3 + transcript écrit</span></div>
+        </div>
+        <p class="cb-sv-pack-price">À partir de — sur devis</p>
+      </div>
+    </div>
+    <p class="cb-sv-note">Tous les packs incluent un échange préalable pour ajuster le contenu à ton besoin réel.</p>
+  </section>
+
+  <section class="cb-sv-carte">
+    <div class="cb-sv-carte-blob"></div>
+    <div class="cb-sv-carte-inner">
+      <span class="cb-sv-carte-tag">Sur demande</span>
+      <h2 class="cb-sv-carte-h2">Pour aller <em>plus loin.</em></h2>
+      <div class="cb-sv-carte-grid">
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Miniature</p>
+          <p class="cb-sv-carte-desc">Pensée pour capter le clic sur chaque plateforme.</p>
+        </div>
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Extrait teasing Spotify</p>
+          <p class="cb-sv-carte-desc">Un court extrait audio pour donner envie d'écouter.</p>
+        </div>
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Sous-titres incrustés</p>
+          <p class="cb-sv-carte-desc">Pour les formats courts — essentiel sur les réseaux.</p>
+        </div>
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Montage seul</p>
+          <p class="cb-sv-carte-desc">Format long, sans déclinaisons réseaux.</p>
+        </div>
+        <div class="cb-sv-carte-item featured">
+          <div class="cb-sv-carte-top">
+            <p class="cb-sv-carte-name">Étalonnage seul</p>
+            <a href="etalonnage.html" class="cb-sv-carte-link">Page dédiée →</a>
+          </div>
+          <p class="cb-sv-carte-desc">En complément d'un montage existant.</p>
+        </div>
+        <div class="cb-sv-carte-item">
+          <p class="cb-sv-carte-name">Volume mensuel</p>
+          <p class="cb-sv-carte-desc">Plusieurs épisodes réguliers — tarif dégressif.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-sv-cta">
+    <h2 class="cb-sv-cta-h2">On trouve la formule <em>qui te va ?</em></h2>
+    <p class="cb-sv-cta-text">Un appel de 30 minutes pour cadrer ton besoin et établir un devis.</p>
+    <a href="#LIEN_CALENDLY" class="cb-sv-cta-btn">Réserver un appel gratuit</a>
+  </section>
+
+  <footer class="cb-footer">
+    <a href="index.html" class="cb-footer-logo">Carla <em>Blot</em></a>
+    <ul class="cb-footer-links">
+      <li><a href="https://instagram.com/TON_COMPTE">Instagram</a></li>
+      <li><a href="https://linkedin.com/in/TON_COMPTE">LinkedIn</a></li>
+      <li><a href="mailto:carlablm.pro@gmail.com">carlablm.pro@gmail.com</a></li>
+      <li><a href="#">Mentions légales</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
