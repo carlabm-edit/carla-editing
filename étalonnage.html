@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Étalonnage — Carla Blot</title>
+  <meta name="description" content="Une image cohérente, une émotion qui se sent. L'étalonnage par Carla Blot.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== STYLES PARTAGÉS (nav, footer, base) ===== */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'DM Sans', sans-serif; background: #FAFAF8; }
+    .cb-nav { position: sticky; top: 0; z-index: 999; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(30,42,42,0.08); padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .cb-nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #1E2A2A; text-decoration: none; transition: opacity 0.2s ease; }
+    .cb-nav-logo:hover { opacity: 0.75; }
+    .cb-nav-logo em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+    .cb-nav-links a { font-size: 13px; color: #5A6B6B; text-decoration: none; transition: color 0.2s ease; }
+    .cb-nav-links a:hover { color: #1E2A2A; }
+    .cb-nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; background: #1E2A2A; color: #FAFAF8 !important; padding: 9px 18px; border-radius: 3px; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease; }
+    .cb-nav-cta:hover { background: #E8896A !important; transform: translateY(-1px); }
+    .cb-nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .cb-nav-toggle span { display: block; width: 22px; height: 2px; background: #1E2A2A; border-radius: 2px; }
+    @media (max-width: 768px) {
+      .cb-nav { padding: 14px 20px; position: relative; }
+      .cb-nav-toggle { display: flex; }
+      .cb-nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #FAFAF8; flex-direction: column; align-items: flex-start; padding: 16px 20px 20px; border-bottom: 0.5px solid rgba(30,42,42,0.08); gap: 16px; }
+      .cb-nav-links.open { display: flex; }
+    }
+    .cb-footer { padding: 24px 48px; background: #162020; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .cb-footer-logo { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #C4B4E8; text-decoration: none; }
+    .cb-footer-logo em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-footer-links { display: flex; gap: 22px; align-items: center; list-style: none; margin: 0; padding: 0; }
+    .cb-footer-links a { font-size: 11px; color: #9B8EC4; text-decoration: none; transition: opacity 0.2s; }
+    .cb-footer-links a:hover { opacity: 0.7; }
+    @media (max-width: 768px) { .cb-footer { padding: 20px 20px; flex-direction: column; text-align: center; } }
+    .cb-et-hero { position: relative; padding: 64px 48px 56px; background: #FAFAF8; overflow: hidden; text-align: center; }
+    .cb-et-blob-1 { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: rgba(180,155,215,0.16); top: -100px; left: -60px; filter: blur(60px); pointer-events: none; }
+    .cb-et-blob-2 { position: absolute; width: 240px; height: 240px; border-radius: 50%; background: rgba(168,213,204,0.18); top: -60px; right: -50px; filter: blur(55px); pointer-events: none; }
+    .cb-et-hero-inner { position: relative; }
+    .cb-et-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 16px; display: block; }
+    .cb-et-h1 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.15; color: #1E2A2A; margin: 0 0 14px; }
+    .cb-et-h1 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-et-sub { font-size: 14px; color: #5A6B6B; line-height: 1.7; max-width: 520px; margin: 0 auto; }
+
+    .cb-et-comparison { padding: 48px 48px; background: #FAFAF8; }
+    .cb-et-comp-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 8px; display: block; text-align: center; }
+    .cb-et-comp-h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #1E2A2A; margin: 0 0 28px; text-align: center; }
+    .cb-et-comp-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-et-comp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .cb-et-comp-frame { position: relative; width: 100%; padding-top: 56.25%; border-radius: 10px; overflow: hidden; background-size: cover; background-position: center; }
+    .cb-et-comp-label { position: absolute; top: 10px; left: 10px; font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 10px; }
+    .cb-et-label-brut { background: rgba(0,0,0,0.4); color: #F5F0EC; }
+    .cb-et-label-final { background: rgba(232,137,106,0.9); color: #FAFAF8; }
+
+    .cb-et-styles { position: relative; padding: 48px 48px; background: #F5F3F0; overflow: hidden; }
+    .cb-et-styles-blob { position: absolute; width: 260px; height: 260px; border-radius: 50%; background: rgba(168,213,204,0.15); bottom: -80px; right: -50px; filter: blur(50px); pointer-events: none; }
+    .cb-et-styles-inner { position: relative; }
+    .cb-et-styles-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 8px; display: block; text-align: center; }
+    .cb-et-styles-h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #1E2A2A; margin: 0 0 6px; text-align: center; }
+    .cb-et-styles-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-et-styles-intro { font-size: 12px; color: #5A6B6B; text-align: center; margin: 0 0 24px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .cb-et-styles-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .cb-et-style-card { background: rgba(255,255,255,0.6); border-radius: 10px; overflow: hidden; }
+    .cb-et-style-img { height: 90px; }
+    .cb-et-style-content { padding: 12px; }
+    .cb-et-style-name { font-size: 12px; font-weight: 500; color: #1E2A2A; margin: 0 0 3px; }
+    .cb-et-style-desc { font-size: 11px; color: #5A6B6B; line-height: 1.5; margin: 0; }
+
+    .cb-et-cta { padding: 56px 48px; background: linear-gradient(160deg, #2B3A3A 0%, #1E2A2A 100%); text-align: center; position: relative; overflow: hidden; }
+    .cb-et-cta-blob { position: absolute; width: 240px; height: 240px; border-radius: 50%; background: rgba(180,155,215,0.12); top: -70px; right: -50px; filter: blur(45px); pointer-events: none; }
+    .cb-et-cta-inner { position: relative; }
+    .cb-et-cta-h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #F5F0EC; margin: 0 0 10px; }
+    .cb-et-cta-h2 em { font-style: italic; font-weight: 400; color: #E8896A; }
+    .cb-et-cta-text { font-size: 13px; color: #A8BCBC; margin: 0 0 22px; }
+    .cb-et-cta-btn { background: #E8896A; color: #FAFAF8; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 12px 28px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: transform 0.15s ease; }
+    .cb-et-cta-btn:hover { transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .cb-et-hero { padding: 48px 20px 40px; }
+      .cb-et-h1 { font-size: 28px; }
+      .cb-et-comparison { padding: 40px 20px; }
+      .cb-et-comp-row { grid-template-columns: 1fr; }
+      .cb-et-styles { padding: 40px 20px; }
+      .cb-et-styles-grid { grid-template-columns: 1fr; }
+      .cb-et-cta { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="cb-nav">
+    <a href="index.html" class="cb-nav-logo">Carla <em>Blot</em></a>
+    <button class="cb-nav-toggle" onclick="this.parentNode.querySelector('.cb-nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="cb-nav-links">
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="etalonnage.html">Étalonnage</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="#LIEN_CALENDLY" class="cb-nav-cta">Travaillons ensemble</a></li>
+    </ul>
+  </nav>
+
+  <section class="cb-et-hero">
+    <div class="cb-et-blob-1"></div>
+    <div class="cb-et-blob-2"></div>
+    <div class="cb-et-hero-inner">
+      <span class="cb-et-tag">Étalonnage</span>
+      <h1 class="cb-et-h1">Une image cohérente.<br>Une <em>émotion</em> qui se sent.</h1>
+      <p class="cb-et-sub">L'étalonnage, c'est deux choses à la fois : l'harmonisation des couleurs d'un plan à l'autre, et la création d'un look qui sublime ton tournage. Une ambiance pensée pour servir ce que tu veux transmettre.</p>
+    </div>
+  </section>
+
+  <section class="cb-et-comparison">
+    <span class="cb-et-comp-tag">Avant / après</span>
+    <h2 class="cb-et-comp-h2">La différence se <em>voit.</em></h2>
+    <div class="cb-et-comp-row">
+      <div class="cb-et-comp-frame" style="background: linear-gradient(150deg,#6B6B62,#8A8A7E);">
+        <span class="cb-et-comp-label cb-et-label-brut">Brut</span>
+      </div>
+      <div class="cb-et-comp-frame" style="background: linear-gradient(150deg,#2B3A3A,#4A6B5F);">
+        <span class="cb-et-comp-label cb-et-label-final">Étalonné</span>
+      </div>
+    </div>
+    <div class="cb-et-comp-row">
+      <div class="cb-et-comp-frame" style="background: linear-gradient(150deg,#7A6E5C,#A0917A);">
+        <span class="cb-et-comp-label cb-et-label-brut">Brut</span>
+      </div>
+      <div class="cb-et-comp-frame" style="background: linear-gradient(150deg,#3D2A1A,#8A5A35);">
+        <span class="cb-et-comp-label cb-et-label-final">Étalonné</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-et-styles">
+    <div class="cb-et-styles-blob"></div>
+    <div class="cb-et-styles-inner">
+      <span class="cb-et-styles-tag">Styles proposés</span>
+      <h2 class="cb-et-styles-h2">Une <em>ambiance</em> pour chaque histoire.</h2>
+      <p class="cb-et-styles-intro">Chaque projet porte une intention différente — le look doit la servir, pas la couvrir.</p>
+      <div class="cb-et-styles-grid">
+        <div class="cb-et-style-card">
+          <div class="cb-et-style-img" style="background: linear-gradient(150deg,#2B3A3A,#4A6B5F);"></div>
+          <div class="cb-et-style-content">
+            <p class="cb-et-style-name">Naturel & chaleureux</p>
+            <p class="cb-et-style-desc">Pour donner envie de rester, comme dans une conversation entre amis.</p>
+          </div>
+        </div>
+        <div class="cb-et-style-card">
+          <div class="cb-et-style-img" style="background: linear-gradient(150deg,#1A2438,#2E4A6B);"></div>
+          <div class="cb-et-style-content">
+            <p class="cb-et-style-name">Cinéma & contraste</p>
+            <p class="cb-et-style-desc">Pour donner du poids à une histoire qui mérite d'être prise au sérieux.</p>
+          </div>
+        </div>
+        <div class="cb-et-style-card">
+          <div class="cb-et-style-img" style="background: linear-gradient(150deg,#3D2A1A,#8A5A35);"></div>
+          <div class="cb-et-style-content">
+            <p class="cb-et-style-name">Vif & punchy</p>
+            <p class="cb-et-style-desc">Pour capter l'attention dès la première seconde et ne plus la lâcher.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-et-cta">
+    <div class="cb-et-cta-blob"></div>
+    <div class="cb-et-cta-inner">
+      <h2 class="cb-et-cta-h2">Ton image mérite <em>le bon traitement.</em></h2>
+      <p class="cb-et-cta-text">Discutons de la direction qui correspond à ton univers.</p>
+      <a href="#LIEN_CALENDLY" class="cb-et-cta-btn">Réserver un appel gratuit</a>
+    </div>
+  </section>
+
+  <footer class="cb-footer">
+    <a href="index.html" class="cb-footer-logo">Carla <em>Blot</em></a>
+    <ul class="cb-footer-links">
+      <li><a href="https://instagram.com/TON_COMPTE">Instagram</a></li>
+      <li><a href="https://linkedin.com/in/TON_COMPTE">LinkedIn</a></li>
+      <li><a href="mailto:carlablm.pro@gmail.com">carlablm.pro@gmail.com</a></li>
+      <li><a href="#">Mentions légales</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
