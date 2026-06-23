@@ -37,16 +37,16 @@
     .cb-footer-links a { font-size: 11px; color: #9B8EC4; text-decoration: none; transition: opacity 0.2s; }
     .cb-footer-links a:hover { opacity: 0.7; }
     @media (max-width: 768px) { .cb-footer { padding: 20px 20px; flex-direction: column; text-align: center; } }
-    @keyframes cb-float { 0%, 100% { transform: translateY(0px) scale(1); } 33% { transform: translateY(-18px) scale(1.03); } 66% { transform: translateY(10px) scale(0.97); } }
+    @keyframes cb-float { 0%, 100% { transform: translate(0px, 0px) scale(1); } 33% { transform: translate(18px, -28px) scale(1.08); } 66% { transform: translate(-14px, 16px) scale(0.94); } }
     @keyframes cb-fadein { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ===== HERO ===== */
     .cb-hero { position: relative; padding: 88px 48px 96px; background: #FAFAF8; overflow: hidden; }
-    .cb-hero-blob { position: absolute; border-radius: 50%; pointer-events: none; animation: cb-float 8s ease-in-out infinite; }
-    .cb-hero-blob-1 { width: 380px; height: 380px; background: rgba(180,155,215,0.18); top: -120px; right: -80px; filter: blur(65px); }
-    .cb-hero-blob-2 { width: 280px; height: 280px; background: rgba(168,213,204,0.2); bottom: -80px; left: -50px; filter: blur(55px); animation-delay: -3s; }
-    .cb-hero-blob-3 { width: 200px; height: 200px; background: rgba(242,196,176,0.18); bottom: 60px; right: 160px; filter: blur(45px); animation-delay: -5s; }
-    .cb-hero-content { position: relative; max-width: 620px; animation: cb-fadein 0.9s ease both; }
+    .cb-hero-blob { position: absolute; border-radius: 50%; pointer-events: none; animation: cb-float 7s ease-in-out infinite; }
+    .cb-hero-blob-1 { width: 420px; height: 420px; background: rgba(180,155,215,0.32); top: -130px; right: -90px; filter: blur(70px); }
+    .cb-hero-blob-2 { width: 320px; height: 320px; background: rgba(168,213,204,0.36); bottom: -90px; left: -60px; filter: blur(60px); animation-delay: -2.5s; }
+    .cb-hero-blob-3 { width: 240px; height: 240px; background: rgba(242,196,176,0.32); bottom: 60px; right: 160px; filter: blur(50px); animation-delay: -4.5s; }
+    .cb-hero-content { position: relative; max-width: 620px; margin: 0 auto; text-align: left; animation: cb-fadein 0.9s ease both; }
     .cb-hero-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B8EC4; margin: 0 0 20px; display: block; }
     .cb-hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 52px); font-weight: 700; line-height: 1.05; color: #1E2A2A; margin: 0 0 8px; }
     .cb-hero-h1 em { font-style: italic; font-weight: 400; color: #E8896A; }
@@ -105,7 +105,8 @@
     .cb-services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .cb-service-card { background: rgba(255,255,255,0.6); border-radius: 10px; padding: 20px; border: 0.5px solid rgba(30,42,42,0.06); transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .cb-service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(30,42,42,0.08); }
-    .cb-service-card.featured { border: 0.5px solid #E8896A; }
+    .cb-service-card.featured { border: 0.5px solid #E8896A; display: block; text-decoration: none; cursor: pointer; }
+    .cb-service-card.featured:hover { box-shadow: 0 12px 28px rgba(232,137,106,0.18); }
     .cb-service-top { display: flex; justify-content: space-between; align-items: flex-start; }
     .cb-service-name { font-size: 14px; font-weight: 500; color: #1E2A2A; margin: 0 0 6px; }
     .cb-service-desc { font-size: 12px; color: #5A6B6B; line-height: 1.6; margin: 0; }
@@ -146,6 +147,8 @@
 
     @media (max-width: 768px) {
       .cb-hero { padding: 56px 20px 64px; }
+      .cb-hero-blob-1, .cb-hero-blob-2 { width: 220px; height: 220px; }
+      .cb-hero-blob-3 { display: none; }
       .cb-hero-blob-1, .cb-hero-blob-2 { width: 200px; height: 200px; }
       .cb-hero-blob-3 { display: none; }
       .cb-promise { padding: 48px 20px; }
@@ -288,23 +291,23 @@
       <div class="cb-services-grid">
         <div class="cb-service-card">
           <p class="cb-service-name">Montage & rythme</p>
-          <p class="cb-service-desc">Podcasts, interviews, facecams, documentaires — je structure pour que ça se regarde.</p>
+          <p class="cb-service-desc">Le silence qui tombe juste avant la phrase clé. La coupe qu'on ne voit pas. C'est ce qui retient une audience sans qu'elle sache pourquoi.</p>
         </div>
         <div class="cb-service-card">
           <p class="cb-service-name">Habillage visuel</p>
-          <p class="cb-service-desc">Motion design, intros, textes animés — une identité qui s'entend et se voit.</p>
+          <p class="cb-service-desc">Un texte qui apparaît au bon moment, une transition qui ne casse rien. Ton contenu devient reconnaissable au premier coup d'œil.</p>
         </div>
         <div class="cb-service-card">
-          <p class="cb-service-name">Son & mixage</p>
-          <p class="cb-service-desc">Traitement audio, musique, ambiances — le son qu'on écoute sans s'en rendre compte.</p>
+          <p class="cb-service-name">Son & ambiance</p>
+          <p class="cb-service-desc">Une voix posée, des SFX et une musique qui renforcent l'immersion sans jamais se faire remarquer. Le confort qui fait rester jusqu'au bout.</p>
         </div>
-        <div class="cb-service-card featured">
+        <a href="etalonnage.html" class="cb-service-card featured">
           <div class="cb-service-top">
             <p class="cb-service-name">Étalonnage</p>
-            <a href="etalonnage.html" class="cb-service-link">Page dédiée →</a>
+            <span class="cb-service-link">Page dédiée →</span>
           </div>
-          <p class="cb-service-desc">Colorimétrie cohérente et soignée — pour une image qui inspire confiance.</p>
-        </div>
+          <p class="cb-service-desc">La même chaleur de lumière du début à la fin. Une image qui semble simplement... juste.</p>
+        </a>
       </div>
       <div class="cb-services-cta">
         <a href="services.html">Voir tous les services et les packs →</a>
