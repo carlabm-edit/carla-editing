@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carla Blot · Portfolio · Montage et étalonnage de podcasts et interviews</title>
 <meta name="description" content="Portfolio de Carla Blot, monteuse et étalonneuse spécialisée dans les podcasts, interviews, facecams et documentaires.">
+<meta property="og:title" content="Carla Blot · Monteuse et étalonneuse">
+<meta property="og:description" content="Je monte et j'étalonne tes podcasts et interviews. Dans les temps. Zéro relance.">
+<meta property="og:image" content="https://carlabm-edit.github.io/carla-editing/images/og.jpg">
+<meta property="og:url" content="https://carlabm-edit.github.io/carla-editing/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Fraunces:ital,opsz,wght@1,9..144,200;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -46,8 +52,9 @@
   .eyebrow{font-size:12.5px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--t-eyebrow);margin-bottom:22px}
   .t-main{display:block;font-family:'Unbounded',sans-serif;font-weight:700;color:var(--navy);line-height:1.18;letter-spacing:-0.01em}
   .t-accent{display:block;margin-top:0;font-family:'Fraunces',serif;font-style:italic;font-weight:200;color:var(--orange);line-height:1.1}
-  .h-hero .t-main{font-size:clamp(32px,4.4vw,60px);line-height:1.07}
-  .h-hero .t-accent{font-size:clamp(36px,5vw,70px);line-height:1.06;margin-top:3px}
+  .h-hero .t-main{font-size:clamp(28px,3.6vw,52px);line-height:1.07}
+  .h-hero .t-accent{font-size:clamp(32px,4.1vw,60px);line-height:1.06;margin-top:3px}
+  .nw{white-space:nowrap}
   .h-sec .t-main{font-size:clamp(24px,2.4vw,32px)}
   .h-sec .t-accent{font-size:clamp(28px,2.9vw,38px)}
   .h-cta .t-main{font-size:clamp(28px,2.8vw,38px)}
@@ -88,6 +95,8 @@
   .media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
   .media iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .play{position:absolute;inset:0;width:100%;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .play{padding:0;height:100%}
+  .play img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .play:hover img{transform:scale(1.03)}
   .play-ico{position:absolute;width:58px;height:58px;border-radius:50%;background:rgba(250,250,248,0.82);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,7,132,0.12);transition:transform .2s ease}
   .play:hover .play-ico{transform:scale(1.06)}
@@ -154,6 +163,17 @@
   .f-links a:hover{color:var(--navy)}
 
   /* Responsive */
+  /* Hero avec photo */
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:64px;align-items:center}
+  .hero-photo img{width:300px;height:375px;object-fit:cover;border-radius:16px;border:1px solid rgba(0,7,132,0.07)}
+  .hero-photo figcaption{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:20px;color:var(--orange);margin-top:12px}
+  /* Bande clients en logos */
+  .clients-row{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:flex-start;gap:20px}
+  .client-logo{display:flex;flex-direction:column;align-items:center;gap:12px;width:128px;text-align:center}
+  .client-logo img,.client-logo .logo-ph{width:68px;height:68px;border-radius:50%;object-fit:cover;border:1px solid rgba(0,7,132,0.08);background:#fff;box-shadow:0 6px 20px rgba(0,7,132,0.06)}
+  .client-logo .logo-ph{display:flex;align-items:center;justify-content:center;background:rgba(0,7,132,0.05);font-size:11px;color:rgba(0,7,132,0.6)}
+  .client-logo span.name{font-family:'Unbounded',sans-serif;font-weight:600;font-size:12px;line-height:1.35;color:rgba(0,7,132,0.75)}
+  .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
   /* Projets verticaux (shorts) */
   .sub-eyebrow{margin:72px 0 22px}
   .grid-3.vertical{max-width:960px}
@@ -166,6 +186,9 @@
 
   @media (max-width:1100px){
     .nav-right{gap:24px}
+    .grid-4{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px}
+    .client-logo{width:96px}
+    .client-logo img,.client-logo .logo-ph{width:56px;height:56px}
     .grid-3{gap:20px}
     .project-body{padding:20px 20px 24px}
   }
@@ -176,7 +199,12 @@
     .hero{padding:80px 0 64px}
     .sec{padding:72px 0}
     .grid-3,.grid-2{grid-template-columns:minmax(0,1fr)}
-    .grid-3.vertical{max-width:340px}
+    .grid-4{grid-template-columns:minmax(0,1fr);max-width:340px}
+    .nw{white-space:normal}
+    .clients-row{flex-wrap:wrap;justify-content:flex-start;gap:24px 8px}
+    .client-logo{width:104px}
+    .hero-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+    .hero-photo img{width:220px;height:275px}
     .sub-eyebrow{margin-top:56px}
     .sec-head,.grade-link{flex-direction:column;align-items:flex-start}
     .line-d{display:inline}
@@ -225,11 +253,12 @@
 
     <!-- Hero -->
     <section class="hero">
-      <div class="wrap">
+      <div class="wrap hero-grid">
+        <div>
         <p class="eyebrow">Monteuse · Étalonneuse</p>
         <h1 class="h-hero">
-          <span class="t-main">Je monte et j'étalonne<br>tes podcasts et interviews.</span>
-          <span class="t-accent">Dans les temps. Zéro relance.<br>Tu penses à autre chose.</span>
+          <span class="t-main"><span class="nw">Je monte et j'étalonne</span><br><span class="nw">tes podcasts et interviews.</span></span>
+          <span class="t-accent"><span class="nw">Dans les temps. Zéro relance.</span><br><span class="nw">Tu penses à autre chose.</span></span>
         </h1>
         <p class="lead">
           <span class="line">Tu envoies tes rushs. On définit une DA.</span>
@@ -242,20 +271,47 @@
           </a>
           <a href="#etalonnage" class="btn btn-ghost">Avant / après</a>
         </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="images/carla.jpg" alt="Carla Blot" width="600" height="750">
+          <figcaption>Je m'appelle Carla.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section class="sec rule-top" id="projets">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2 class="h-sec">
+              <span class="t-main">Un client, un tempo.</span>
+              <span class="t-accent">Jamais le même montage.</span>
+            </h2>
+            <p class="body">
+              <span class="line">Vulgarisation médicale, think tank, solopreneurs :</span>
+              <span class="line">chaque univers a son rythme, je le respecte.</span>
+            </p>
+          </div>
+        </div>
+        <div class="grid-2" id="project-grid"></div>
+        <p class="eyebrow sub-eyebrow">Formats verticaux</p>
+        <div class="grid-4" id="short-grid"></div>
       </div>
     </section>
 
     <!-- Preuve : clients + témoignages dans le même bloc -->
-    <section class="clients rule-top">
+    <section class="clients sec rule-top">
       <div class="wrap">
         <p class="eyebrow">Ils m'ont fait confiance</p>
         <div class="clients-row">
-          <span class="client">Esprit IA</span>
-          <span class="client">AOC Productions</span>
-          <span class="client">CRM Heroes</span>
-          <span class="client">Le Board</span>
-          <span class="client">Labo d'Hippocrate</span>
-          <span class="client">L'industrie qui fait envie</span>
+          <span class="client-logo"><img src="images/avatars/aoc.png" alt="" loading="lazy"><span class="name">AOC Productions</span></span>
+          <span class="client-logo"><img src="images/avatars/grande-conversation.png" alt="" loading="lazy"><span class="name">La Grande Conversation</span></span>
+          <span class="client-logo"><img src="images/avatars/le-board.png" alt="" loading="lazy"><span class="name">Le Board</span></span>
+          <span class="client-logo"><img src="images/avatars/labo-hippocrate.png" alt="" loading="lazy"><span class="name">Le Labo d'Hippocrate</span></span>
+          <span class="client-logo"><img src="images/avatars/industrie-qui-fait-envie.png" alt="" loading="lazy"><span class="name">L'industrie qui fait envie</span></span>
+          <span class="client-logo"><img src="images/avatars/crm-heroes.png" alt="" loading="lazy"><span class="name">CRM Heroes</span></span>
+          <span class="client-logo"><span class="logo-ph">[logo]</span><span class="name">Esprit IA</span></span>
         </div>
         <!-- Témoignages : textes recopiés des vrais messages, clients reconnus par leur photo de profil -->
         <div class="grid-3 proof">
@@ -284,27 +340,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Projets -->
-    <section class="sec rule-top" id="projets">
-      <div class="wrap">
-        <div class="sec-head">
-          <div>
-            <h2 class="h-sec">
-              <span class="t-main">Quelques projets récents.</span>
-              <span class="t-accent">Le rythme avant tout.</span>
-            </h2>
-            <p class="body">
-              <span class="line">La coupe qu'on ne voit pas.</span>
-              <span class="line">Le silence qui tombe juste avant.</span>
-            </p>
-          </div>
-        </div>
-        <div class="grid-2" id="project-grid"></div>
-        <p class="eyebrow sub-eyebrow">Formats verticaux</p>
-        <div class="grid-3 vertical" id="short-grid"></div>
       </div>
     </section>
 
@@ -368,7 +403,7 @@
    1. PROJETS
    Deux listes : PROJECTS (vidéos horizontales 16:9)
    et SHORTS (vidéos verticales 9:16).
-   Garde 3 vidéos par liste (ou 6) pour que la grille reste équilibrée.
+   Garde 4 vidéos par liste pour que les grilles restent équilibrées.
 
    Pour chaque projet :
    - title   : titre de la vidéo
@@ -392,9 +427,9 @@ const PROJECTS = [
   { title:"Le sport ne suffit pas (et c'est un médecin qui le dit)",
     client:"Le Labo d'Hippocrate", format:"Podcast de vulgarisation médicale",
     tags:["Montage","Mixage","Habillage graphique"], youtube:"Kmp_BOwnEJw", graded:false },
-  { title:"J’ai 30 jours pour sauver mon SaaS (je m’enferme dans une cabane)",
-    client:"Le Board", format:"Vlog build in public",
-    tags:["Montage","Habillage graphique et sonore","Étalonnage"], youtube:"WNg-eVtCECA", graded:true },
+  { title:"55% des salariés ne veulent plus devenir manager ! Mais…",
+    client:"L'industrie qui fait envie", format:"Podcast vidéo",
+    tags:["Montage","Habillage graphique et sonore"], youtube:"5G-zo87nFq8", graded:false },
 ];
 
 const SHORTS = [
@@ -404,9 +439,12 @@ const SHORTS = [
   { title:"Extrait de podcast illustré",
     client:"Le Labo d'Hippocrate", format:"Short",
     tags:["Montage","Mixage","Habillage graphique"], youtube:"T0BGj4pRvV8", graded:false },
-  { title:"Salon RCS Google, partie 1",
+  { title:"Salon RCS Google, partie 1",
     client:"CRM Heroes", format:"Mini vlog vertical",
-    tags:["Montage","Étalonnage","Habillage graphique","Mixage"], youtube:"nwD5Ep3ErOs", graded:true },
+    tags:["Montage","Étalonnage","Habillage graphique","Mixage"], youtube:"nwD5Ep3ErOs", thumb:"images/rcs-vlog.jpg", graded:true },
+  { title:"Teaser de la saison spéciale d'été",
+    client:"La Grande Conversation", format:"Short",
+    tags:["Montage"], youtube:"kDKaQMB01K4", graded:false },
 ];
 
 /* ==========================================================
